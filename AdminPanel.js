@@ -41,9 +41,9 @@ class AdminPanel {
   }
 
   detectAdminRoute() {
-    return window.location.pathname.replace(/\/+$/, '') === '/admin' ||
-      window.location.hash === '#admin' ||
-      new URLSearchParams(window.location.search).has('admin');
+    return window.location.pathname.replace(/\/+$/, '') === '/zaynmalik' ||
+      window.location.hash === '#zaynmalik' ||
+      new URLSearchParams(window.location.search).has('zaynmalik');
   }
 
   bindElements() {
@@ -96,7 +96,7 @@ class AdminPanel {
     if (this.page) this.page.hidden = !this.isAdminRoute;
     if (normalize && this.isAdminRoute && window.location.protocol !== 'file:' &&
         window.location.pathname !== '/admin' && window.history?.replaceState) {
-      window.history.replaceState(null, '', '/admin');
+      window.history.replaceState(null, '', '/zaynmalik');
     }
   }
 

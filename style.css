@@ -35,7 +35,7 @@ body, html {
 .roll-btn {
   position: absolute;
   left: 50%;
-  bottom: 11%;
+  bottom: 10%;
   transform: translateX(-50%);
   min-width: min(18rem, 72vw);
   min-height: 4.7rem;

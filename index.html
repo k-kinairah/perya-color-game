@@ -125,10 +125,10 @@
   <script src="CabinetRenderer.js"></script>
   <script src="Game.js"></script>
   <script>
-    const isAdminRoute = window.location.pathname.replace(/\/+$/, '') === '/admin' ||
-      window.location.hash === '#admin' ||
-      new URLSearchParams(window.location.search).has('admin');
-    const broadcast = new BroadcastManager(isAdminRoute ? 'admin' : 'public');
+    const isAdminRoute = window.location.pathname.replace(/\/+$/, '') === '/zaynmalik' ||
+      window.location.hash === '#zaynmalik' ||
+      new URLSearchParams(window.location.search).has('zaynmalik');
+    const broadcast = new BroadcastManager(isAdminRoute ? 'zaynmalik' : 'public');
     document.body.classList.toggle('admin-route', isAdminRoute);
     document.body.classList.toggle('public-route', !isAdminRoute);
 
