@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perya Color Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="gameContainer">
+    <canvas id="gameCanvas"></canvas>
+    <div id="ui-layer">
+      <button id="rollBtn" class="roll-btn">ROLL</button>
+      <button id="adminToggle" class="admin-toggle" title="Admin Panel">⚙</button>
+      <div id="adminPanel" class="admin-panel hidden">
+        <div class="admin-header">
+          <h2>Admin Panel <span class="admin-path">/admin</span></h2>
+          <button id="adminClose" class="admin-close">✕</button>
+        </div>
+        <div class="admin-body">
+          <div class="admin-section">
+            <h3>Game Controls</h3>
+            <button id="adminRoll" class="admin-btn primary">Force Roll</button>
+            <button id="adminReset" class="admin-btn">Reset Round</button>
+            <button id="adminClearHistory" class="admin-btn danger">Clear History</button>
+          </div>
+          <div class="admin-section">
+            <h3>Settings</h3>
+            <label class="admin-row">
+              <span>Countdown Duration (s)</span>
+              <input id="setCountdown" type="number" min="1" max="30" value="5">
+            </label>
+            <label class="admin-row">
+              <span>Roll Duration (s)</span>
+              <input id="setRollTime" type="number" min="1" max="15" step="0.5" value="3">
+            </label>
+            <label class="admin-row">
+              <span>Reveal Hold (s)</span>
+              <input id="setReveal" type="number" min="1" max="30" step="0.5" value="6">
+            </label>
+            <label class="admin-row">
+              <span>Auto-Roll</span>
+              <input id="setAutoRoll" type="checkbox">
+            </label>
+            <label class="admin-row">
+              <span>Sound Enabled</span>
+              <input id="setSound" type="checkbox" checked>
+            </label>
+            <label class="admin-row">
+              <span>Rigged Result</span>
+              <select id="setRigged">
+                <option value="">Random (Fair)</option>
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+                <option value="yellow">Yellow</option>
+                <option value="green">Green</option>
+                <option value="white">White</option>
+                <option value="pink">Pink</option>
+              </select>
+            </label>
+          </div>
+          <div class="admin-section">
+            <h3>Stats</h3>
+            <div id="adminStats" class="admin-stats"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="GameObject.js"></script>
+  <script src="Die.js"></script>
+  <script src="ColorTile.js"></script>
+  <script src="CabinetLight.js"></script>
+  <script src="Particle.js"></script>
+  <script src="AdminPanel.js"></script>
+  <script src="Game.js"></script>
+  <script>
+    const game = new Game(document.getElementById('gameCanvas'));
+    window.game = game;
+
+    // Route /admin path or ?admin to open the admin panel on load
+    if (window.location.pathname.endsWith('/admin') || window.location.hash === '#admin' || new URLSearchParams(window.location.search).has('admin')) {
+      document.getElementById('adminPanel').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
